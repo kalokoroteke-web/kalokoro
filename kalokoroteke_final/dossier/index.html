@@ -3,464 +3,84 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kalokoro Teke – Música Experimental y Electrónica</title>
+  <title>Dossier – Kalokoro Teke</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg:        #0d0d0f;
-      --bg2:       #131318;
-      --bg3:       #1a1a22;
-      --accent:    #7b5ea7;
-      --accent2:   #4fc3c3;
-      --text:      #e8e4f0;
-      --muted:     #8a86a0;
-      --nav-h:     56px;
+      --bg:     #0d1520;
+      --accent: #7b5ea7;
+      --text:   #e8e4f0;
+      --muted:  #8a86a0;
+      --nav-h:  56px;
     }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: 'Barlow', sans-serif; font-weight: 300; min-height: 100vh; display: flex; flex-direction: column; }
 
-    html { scroll-behavior: smooth; }
+    nav { position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h); background: rgba(13,21,32,0.95); backdrop-filter: blur(12px); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; z-index: 100; border-bottom: 1px solid rgba(123,94,167,0.2); }
+    .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 3px; color: var(--text); text-decoration: none; }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s; }
+    .nav-back:hover { color: var(--text); }
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Barlow', sans-serif;
-      font-weight: 300;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: var(--nav-h);
-      background: rgba(13,13,15,0.85);
-      backdrop-filter: blur(12px);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 2rem;
-      z-index: 100;
-      border-bottom: 1px solid rgba(123,94,167,0.2);
-    }
-
-    .nav-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.4rem;
-      letter-spacing: 3px;
-      color: var(--text);
-      text-decoration: none;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.85rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--text); }
-
-    /* ── HERO ── */
-    .hero {
-      position: relative;
+    .dossier-wrap {
+      flex: 1;
+      padding: calc(var(--nav-h) + 2rem) 2rem 3rem;
+      max-width: 1000px;
+      margin: 0 auto;
       width: 100%;
-      height: 100vh;
-      min-height: 500px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-end;
-      padding-bottom: 4rem;
-      overflow: hidden;
     }
 
-    .hero-img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      filter: brightness(0.55) saturate(1.2);
-    }
-
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(13,13,15,0.1) 0%,
-        rgba(13,13,15,0.0) 40%,
-        rgba(13,13,15,0.7) 75%,
-        rgba(13,13,15,1)   100%
-      );
-    }
-
-    .hero-content {
-      position: relative;
-      text-align: center;
-      padding: 0 1rem;
-      animation: fadeUp 1s ease both;
-    }
-
-    .hero-title {
+    .dossier-title {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+      font-size: 2.5rem;
       letter-spacing: 4px;
-      line-height: 1;
-      color: #fff;
-      white-space: nowrap;
-      text-shadow: 0 2px 40px rgba(0,0,0,0.8);
-    }
-
-    .hero-desc {
-      margin-top: 1rem;
-      font-size: 1rem;
-      color: var(--muted);
-      max-width: 480px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .btn {
-      display: inline-block;
-      margin-top: 1.8rem;
-      padding: 0.7rem 2.2rem;
-      border: 1px solid var(--accent);
-      color: var(--text);
-      text-decoration: none;
-      font-size: 0.8rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      transition: background 0.25s, color 0.25s;
-    }
-
-    .btn:hover {
-      background: var(--accent);
+      margin-bottom: 2rem;
       color: #fff;
     }
 
-    /* ── SECCIÓN GENÉRICA ── */
-    section {
-      padding: 5rem 2rem;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .section-label {
-      font-size: 0.75rem;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--accent2);
-      margin-bottom: 0.5rem;
-    }
-
-    .section-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      letter-spacing: 3px;
-      color: #fff;
-      margin-bottom: 1.5rem;
-    }
-
-    .section-text {
-      color: var(--muted);
-      max-width: 640px;
-      font-size: 1rem;
-      line-height: 1.8;
-    }
-
-    /* ── GALERÍA ── */
-    .gallery-wrap {
-      background: var(--bg2);
-      padding: 0;
-    }
-
-    .gallery-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 4rem 2rem;
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(2, 200px);
-      gap: 6px;
-      margin-top: 2.5rem;
-    }
-
-    .gallery-grid img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: brightness(0.75) saturate(1.1);
-      transition: filter 0.3s, transform 0.3s;
-      cursor: pointer;
-    }
-
-    .gallery-grid img:hover {
-      filter: brightness(1) saturate(1.4);
-      transform: scale(1.02);
-      z-index: 2;
+    .canva-embed {
       position: relative;
-    }
-
-    /* ── QUIÉNES SOMOS ── */
-    .about-wrap {
-      background: var(--bg3);
-    }
-
-    .about-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 5rem 2rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-
-    .about-img {
       width: 100%;
-      aspect-ratio: 4/3;
-      object-fit: cover;
-      filter: brightness(0.8) saturate(1.2);
-    }
-
-    /* ── DIVISOR ── */
-    .divider {
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--accent), transparent);
-      margin: 0 auto;
-    }
-
-    /* ── BANNER INFERIOR ── */
-    .banner-wrap {
-      position: relative;
-      height: 320px;
+      height: 0;
+      padding-top: 56.25%;
+      box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16);
       overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      border-radius: 8px;
+      will-change: transform;
     }
-
-    .banner-img {
+    .canva-embed iframe {
       position: absolute;
-      inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      filter: brightness(0.35) saturate(1.3);
+      top: 0; left: 0;
+      border: none;
+      padding: 0; margin: 0;
     }
 
-    .banner-content {
-      position: relative;
-      text-align: center;
-      padding: 0 1rem;
-    }
-
-    .banner-content p {
-      color: var(--muted);
-      font-size: 0.95rem;
-      letter-spacing: 1px;
-      margin-bottom: 1.5rem;
-    }
-
-    /* ── CONTACTO ── */
-    .contact-wrap {
-      background: var(--bg2);
-    }
-
-    .contact-inner {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 5rem 2rem;
-      text-align: center;
-    }
-
-    .contact-email {
-      display: block;
-      margin-top: 1rem;
-      font-size: 1.1rem;
-      color: var(--accent2);
-      text-decoration: none;
-      letter-spacing: 1px;
-    }
-
-    .contact-email:hover { text-decoration: underline; }
-
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-
-    .social-links a {
-      color: var(--muted);
-      font-size: 0.8rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .social-links a:hover { color: var(--accent2); }
-
-    /* ── FOOTER ── */
-    footer {
-      text-align: center;
-      padding: 2rem;
-      color: var(--muted);
-      font-size: 0.75rem;
-      letter-spacing: 1px;
-      border-top: 1px solid rgba(255,255,255,0.05);
-    }
-
-    /* ── ANIMACIONES ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
-      .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(4, 160px);
-      }
-
-      .about-inner {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-
-      .nav-links { display: none; }
-    }
+    footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.75rem; letter-spacing: 1px; border-top: 1px solid rgba(255,255,255,0.05); }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
-    <a class="nav-logo" href="#">Kalokoro Teke</a>
-    <ul class="nav-links">
-      <li><a href="#galeria">Galería</a></li>
-      <li><a href="#quienes">Quiénes somos</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-      <li><a href="https://kalokoroteke.es/dossier-kalokoro-teke" target="_blank">Dossier</a></li>
-    </ul>
+    <a class="nav-logo" href="../">Kalokoro Teke</a>
+    <a class="nav-back" href="../">← Volver</a>
   </nav>
 
-  <!-- HERO -->
-  <div class="hero">
-    <img class="hero-img"
-         src="https://assets.zyrosite.com/dWxlq7Kozwf64Oqo/copia-de-music-for-times-of-extinction-1-mnlqn72wKyiZ344J.gif"
-         alt="Kalokoro Teke en directo" />
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1 class="hero-title">Canciones Para Tiempos de Extinción</h1>
-      <p class="hero-desc">Directos, composición, grabación en estudio. Producción musical. Música para visuales y eventos.</p>
-      <a class="btn" href="https://www.youtube.com/@kalokoroteke" target="_blank">Escúchanos</a>
+  <div class="dossier-wrap">
+    <h1 class="dossier-title">Dossier</h1>
+    <div class="canva-embed">
+      <iframe loading="lazy"
+        src="https://www.canva.com/design/DAGY04Nz6pk/C-6yhAQfF8y-3uMWYrl6eg/view?embed"
+        allowfullscreen="allowfullscreen"
+        allow="fullscreen">
+      </iframe>
     </div>
   </div>
 
-  <!-- GALERÍA -->
-  <div class="gallery-wrap" id="galeria">
-    <div class="gallery-inner fade-in">
-      <div class="gallery-grid">
-        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=576,fit=crop/dWxlq7Kozwf64Oqo/img_20240528_191604-AR0JroQDwxuB1xXM.jpg" alt="Estudio Kalokoro Teke" />
-        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=829,fit=crop/dWxlq7Kozwf64Oqo/1718373567866-A1aKMZkVNwh11kMn.jpg" alt="Miembro Kalokoro Teke" />
-        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=500,fit=crop/dWxlq7Kozwf64Oqo/kalokoro-pics-ensayo-en-el-local-02-d957EL96j3HXwnqJ.jpg" alt="Ensayo Kalokoro Teke" />
-        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1024,h=416,fit=crop/dWxlq7Kozwf64Oqo/fotos-teke-banner-AVLJ9b7OOzIvlg63.jpg" alt="Kalokoro Teke en directo" />
-        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=576,fit=crop/dWxlq7Kozwf64Oqo/img_20240528_191604-AR0JroQDwxuB1xXM.jpg" alt="Estudio 2" />
-        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=829,fit=crop/dWxlq7Kozwf64Oqo/1718373567866-A1aKMZkVNwh11kMn.jpg" alt="Composición" />
-        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=500,fit=crop/dWxlq7Kozwf64Oqo/kalokoro-pics-ensayo-en-el-local-02-d957EL96j3HXwnqJ.jpg" alt="Local ensayo" />
-        <img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1024,h=416,fit=crop/dWxlq7Kozwf64Oqo/fotos-teke-banner-AVLJ9b7OOzIvlg63.jpg" alt="Concierto" />
-      </div>
-    </div>
-  </div>
-
-  <div class="divider"></div>
-
-  <!-- QUIÉNES SOMOS -->
-  <div class="about-wrap" id="quienes">
-    <div class="about-inner fade-in">
-      <div>
-        <p class="section-label">El dúo</p>
-        <h2 class="section-title">Quiénes somos</h2>
-        <p class="section-text">
-          Definirse es limitarse y en nuestro caso se complica, pero podemos describirnos como un dúo de música que utiliza el live-looping y la electrónica en general, junto con instrumentos convencionales como el piano, bajo o guitarra, ayudados en el escenario por proyecciones visuales que complementan la experiencia.
-        </p>
-        <p class="section-text" style="margin-top:1rem;">
-          Somos músicos experimentados de la escena viguesa, procedentes de bandas de distintos géneros: The Grave Dolls (hard rock), The Bronxson Project (funkrock), Zamaramandi (reggae-jazz), The Mob Swing (rock swing) o V-Go (soul-gospel), entre otras.
-        </p>
-        <a class="btn" style="margin-top:1.5rem;" href="https://linktr.ee/kalokoroteke" target="_blank">Redes sociales</a>
-      </div>
-      <img class="about-img"
-           src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=375,h=829,fit=crop/dWxlq7Kozwf64Oqo/1718373567866-A1aKMZkVNwh11kMn.jpg"
-           alt="Miembro Kalokoro Teke en estudio" />
-    </div>
-  </div>
-
-  <!-- BANNER -->
-  <div class="banner-wrap">
-    <img class="banner-img"
-         src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1024,h=416,fit=crop/dWxlq7Kozwf64Oqo/fotos-teke-banner-AVLJ9b7OOzIvlg63.jpg"
-         alt="Kalokoro Teke live" />
-    <div class="banner-content fade-in">
-      <p>Música en directo, composición, grabación en estudio.<br>Producción musical. Música para visuales y eventos.</p>
-      <a class="btn" href="#contacto">Info / Contacto</a>
-    </div>
-  </div>
-
-  <!-- CONTACTO -->
-  <div class="contact-wrap" id="contacto">
-    <div class="contact-inner fade-in">
-      <p class="section-label">Escríbenos</p>
-      <h2 class="section-title">Contacto</h2>
-      <p class="section-text" style="margin:0 auto; text-align:center;">
-        Para contrataciones, colaboraciones o cualquier consulta.
-      </p>
-      <a class="contact-email" href="/cdn-cgi/l/email-protection#91faf0fdfefafee3fee5f4faf4d1f6fcf0f8fdbff2fefc"><span class="__cf_email__" data-cfemail="741f15181b1f1b061b00111f11341319151d185a171b19">[email&#160;protected]</span></a>
-      <div class="social-links">
-        <a href="https://www.youtube.com/@kalokoroteke" target="_blank">YouTube</a>
-        <a href="https://linktr.ee/kalokoroteke" target="_blank">Linktree</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- FOOTER -->
   <footer>
-    <p>© 2024 Kalokoro Teke · Vigo, Galicia</p>
+    <p>© 2026 Kalokoro Teke · Vigo, Galicia</p>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // Fade-in al hacer scroll
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecti
+</body>
+</html>
