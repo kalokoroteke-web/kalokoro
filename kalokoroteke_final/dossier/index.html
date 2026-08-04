@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dossier – Kalokoro Teke</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:     #0d1520;
+      --accent: #7b5ea7;
+      --text:   #e8e4f0;
+      --muted:  #8a86a0;
+      --nav-h:  56px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: 'Barlow', sans-serif; font-weight: 300; min-height: 100vh; display: flex; flex-direction: column; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h); background: rgba(13,21,32,0.95); backdrop-filter: blur(12px); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; z-index: 100; border-bottom: 1px solid rgba(123,94,167,0.2); }
+    .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 3px; color: var(--text); text-decoration: none; }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s; }
+    .nav-back:hover { color: var(--text); }
+
+    .dossier-wrap {
+      flex: 1;
+      padding: calc(var(--nav-h) + 2rem) 2rem 3rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .dossier-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      letter-spacing: 4px;
+      margin-bottom: 2rem;
+      color: #fff;
+    }
+
+    .canva-embed {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-top: 56.25%;
+      box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16);
+      overflow: hidden;
+      border-radius: 8px;
+      will-change: transform;
+    }
+    .canva-embed iframe {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0; left: 0;
+      border: none;
+      padding: 0; margin: 0;
+    }
+
+    footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.75rem; letter-spacing: 1px; border-top: 1px solid rgba(255,255,255,0.05); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="../">Kalokoro Teke</a>
+    <a class="nav-back" href="../">← Volver</a>
+  </nav>
+
+  <div class="dossier-wrap">
+    <h1 class="dossier-title">Dossier</h1>
+    <div class="canva-embed">
+      <iframe loading="lazy"
+        src="https://www.canva.com/design/DAGY04Nz6pk/C-6yhAQfF8y-3uMWYrl6eg/view?embed"
+        allowfullscreen="allowfullscreen"
+        allow="fullscreen">
+      </iframe>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 Kalokoro Teke · Vigo, Galicia</p>
+  </footer>
+
+</body>
+</html>
